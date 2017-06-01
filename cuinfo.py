@@ -25,7 +25,4 @@ res.raise_for_status()
 print(res.status_code)
 
 cuinfo = bs4.BeautifulSoup(res.text)
-print(type(cuinfo))
-print(cuinfo)
-
-
+print(cuinfo.select('div.sR a'))
