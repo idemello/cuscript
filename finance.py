@@ -40,7 +40,6 @@ print(partTime)
 
 #print to console
 
-print(assets)	
 #print(address)
 #print(city)
 #print(state)
