@@ -20,6 +20,10 @@ bname = tree.xpath('//div[@class="sR"]/a/text()')
 link = tree.xpath('//div[@class="sR"]/a/@href')
 
 for i in range(2):
+	
+	bname = tree.xpath('//div[@class="sR"]/a/text()')
+	link = tree.xpath('//div[@class="sR"]/a/@href')
+
 	print(bname[i] + "\n")
 	link = tree.xpath('//div[@class="sR"]/a/@href')
 
@@ -60,4 +64,7 @@ for i in range(2):
 	print(netWorth)
 	print(members)
 	print(fullTime)
-	print(partTime)				
+	print(partTime)		
+
+	page = requests.get('https://www.creditunionsonline.com/hawaii-credit-unions.html')
+	tree = html.fromstring(page.content)	
