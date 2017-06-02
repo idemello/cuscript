@@ -29,19 +29,3 @@ print(state)
 print(zip)
 print(phone)
 
-
-#tree now contains the whole HTML file in a nice tree structure
-#<span class="item-price">$29.95</span>
-#prices = tree.xpath('//span[@class="item-price"]/text()')
-#starting url
-##url = 'https://www.creditunionsonline.com/hawaii-credit-unions.html'
-#using BeautifulSoup4 module create a beautiful soup object of all pages
-##res = requests.get('https://www.creditunionsonline.com/hawaii-credit-unions.html')
-#check if request was successful
-#if request code is 200 == success
-#elif 400< == failure
-##res.raise_for_status()
-##print(res.status_code)
-##cuinfo = bs4.BeautifulSoup(res.text)
-##print(cuinfo.select('div.sR a'))
-###<meta name ="title: contect="McBryde Federal Credit Union - Eleele, HI">
