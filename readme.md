@@ -1,12 +1,12 @@
-## cuscript
+# cuscript.py
 
-Authors:
+## Authors
 
-Isaac DeMello, Junior, Computer Science
+#### Isaac DeMello, Junior, Computer Science
 
-Jie Zhou, Senior, Electrical Engineering
+#### Jie Zhou, Senior, Electrical Engineering
 
-Wendy Chong, Senior, Computer Engineering
+#### Wendy Chong, Senior, Computer Engineering
 
 ## Table of Contents
 
