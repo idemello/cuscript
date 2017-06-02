@@ -43,7 +43,7 @@ To install the lxml module globally append sudo to the beginning of the command 
 
 ```sudo pip3 install lxml```
 
-Next install the requests module this is done by typing the following command into the terminal:
+Next install the requests module. This is done by typing the following command into the terminal:
 
 ```pip3 install requests```
 
@@ -55,7 +55,7 @@ To run the script enter the directory and type the following command:
 
 ```python3 cuscript.py```
 
-The script will then traverse the pages pulling the 
+The script will then traverse the pages pulling the afforementioned information. The data will be stored in an excel file which can be easily viewed.
 
 
 
