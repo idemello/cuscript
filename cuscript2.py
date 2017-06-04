@@ -13,18 +13,16 @@ def islandFind(zipCode):
     island = ""
     zipCode = zipCode[0]
 
-    if  zipCode == '96705':
+    if  zipCode == '96705' or zipCode == '96752' or zipCode == '96766':
         island = "Kauai"
-    elif zipCode == '96858':
+    elif zipCode == '96858' or zipCode == '96761' or zipCode == '96793':
         island = "Maui"
-    elif zipCode == 96720 or zipCode == 96732 or zipCode == 96740 or zipCode == 96743:
+    elif zipCode == '96720' or zipCode == '96732' or zipCode == '96740' or zipCode == '96743' or zipCode == '96781' or zipCode == '96783':
         island = "Big Island"
     elif zipCode == '96748':
         island = "Molokai"
     else:
         island = "Oahu"
-  
-    print(island) 
     
     return island
 
