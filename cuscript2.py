@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 #Authors: Isaac DeMello, Jie Zhou, Wendy Chong
 #cuinfo.py - Saves specific info about credit unions across Hawaii
 
@@ -41,6 +42,7 @@ stateList= []
 zipcList = []
 islandList = []
 phoneList = []
+branchList = []
 assetsList = []
 loansList = []
 netWorthList = []
@@ -48,7 +50,7 @@ membersList = []
 fullTimeList = []
 partTimeList = []
 
-for i in range(3):
+for i in range(5):
 
 #get the initial name of the bank
 #generate a list of links
@@ -81,7 +83,19 @@ for i in range(3):
 #use the generated url to go to the next page
 #generate an html tree structure
 	
-    financeLinks = tree.xpath('//nav[@class="btnWrap"]/a/@href')	
+    financeLinks = tree.xpath('//nav[@class="btnWrap"]/a/@href')
+#    print(financeLinks[-2])
+#    print(type(financeLinks[-2]))
+
+#    if(financeLinks[-2] != '#reviews'):
+#        branchLink = financeLinks[-2]
+#        page = requests.get(branchLink)
+#        tree = html.fromstring(page.content)
+#        branchList.append(tree.xpath('//div[@class="secText"]/a[1]/text()')
+#        nextPage = requests.get('//div[@class="secText"]/a[0]/href')
+#        financeLinks = tree.xpath('//nav[@class="btnWrap"]/a/@href')
+#		financeURL = financeLinks[-1]
+
     financeURL = financeLinks[-1]	
     page = requests.get(financeURL)
     tree = html.fromstring(page.content)
@@ -122,6 +136,7 @@ print (stateList)
 print (zipcList)
 print (islandList)
 print (phoneList)
+#print (branchList)
 print (assetsList)
 print (loansList)
 print (netWorthList)
@@ -129,4 +144,18 @@ print (membersList)
 print (fullTimeList)
 print (partTimeList)
   
-
+with open("./outputTest.csv", "w", newline='') as fp:
+    writer = csv.writer(fp, delimiter = ',')
+    for j in range (5):
+        writer.writerow([bNameList[j]])
+        writer.writerow([addressList[j]]) 
+        writer.writerow([cityList[j]])
+        writer.writerow([zipcList[j]])
+        writer.writerow([islandList[j]])
+        writer.writerow([phoneList[j]])
+        writer.writerow([assetsList[j]])
+        writer.writerow([loansList[j]])
+        writer.writerow([netWorthList[j]])
+        writer.writerow([membersList[j]])
+        writer.writerow([fullTimeList[j]])
+        writer.writerow([partTimeList[j]])
