@@ -44,6 +44,8 @@ islandList = []
 phoneList = []
 branchList = []
 assetsList = []
+nwRatioList =[]
+wcList = []
 loansList = []
 netWorthList = []
 membersList = []
@@ -105,21 +107,23 @@ for i in range(5):
 
 #parse the finance list for necessary data
 
-    assetsList.append(finance[2])
-    loansList.append(finance[3])
-    netWorthList.append(finance[4])
+    assetsList.append(finance[1])
+    loansList.append(finance[2])
+    netWorthList.append(finance[3])
+    wcList.append(finance[4])
     membersList.append(finance[5])
     fullTimeList.append(finance[6])
     partTimeList.append(finance[7])
 
 #print finance data
 
-   # print(assets)
-   # print(loans)
-   # print(netWorth)
-   # print(members)
-   # print(fullTime)
-   # print(partTime)		
+    print(assetsList[i])
+    print(loansList[i])
+    print(netWorthList[i])
+    print(wcList[i])
+    print(membersList[i])
+    print(fullTimeList[i])
+    print(partTimeList[i])		
 
     print("Data has been collected from {0} Credit Unions\n,".format(i+1))
 
@@ -139,15 +143,16 @@ print (branchList)
 print (assetsList)
 print (loansList)
 print (netWorthList)
+print (wcList)
 print (membersList)
 print (fullTimeList)
 print (partTimeList)
   
 with open("./outputTest.csv", "w", newline='') as fp:
     writer = csv.writer(fp, delimiter = ',')
-    writer.writerow((['Name', 'Address', 'City', 'Zip Code', 'Island', 'Phone Number', 'Multiple Branches', 'Assets', 'Loans', 'Net Worth', 'Number of Members', 'Full Time Employees', 'Part Time Employees']))
+    writer.writerow((['Name', 'Address', 'City', 'Zip Code', 'Island', 'Phone Number', 'Multiple Branches', 'Assets', 'Well Capitalized', 'Loans', 'Net Worth', 'Number of Members', 'Full Time Employees', 'Part Time Employees']))
     
-    rows = zip(bNameList, addressList, cityList, zipcList, islandList, phoneList, branchList, assetsList, loansList, netWorthList, membersList, fullTimeList, partTimeList )
+    rows = zip(bNameList, addressList, cityList, zipcList, islandList, phoneList, branchList, assetsList, wcList, loansList, netWorthList, membersList, fullTimeList, partTimeList )
  
     for row in rows:
         writer.writerow(row)
