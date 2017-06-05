@@ -146,13 +146,27 @@ print (partTimeList)
   
 with open("./outputTest.csv", "w", newline='') as fp:
     writer = csv.writer(fp, delimiter = ',')
+
+    writer.writerow(['Address'])
+    writer.writerow(['City'])
+    writer.writerow(['Zip Code'])
+    writer.writerow(['Island'])
+    writer.writerow(['Phone Number'])
+    writer.writerow(['Assets'])
+    writer.writerow(['Loans'])
+    writer.writerow(['Net Worth'])
+    writer.writerow(['Number of Members'])
+    writer.writerow(['Full Time Employees'])
+    writer.writerow(['Part Time Employees'])
+
+
     for j in range (5):
         writer.writerow([bNameList[j]])
-        writer.writerow([addressList[j]]) 
-        writer.writerow([cityList[j]])
-        writer.writerow([zipcList[j]])
+        writer.writerow(addressList[j]) 
+        writer.writerow(cityList[j])
+        writer.writerow(zipcList[j])
         writer.writerow([islandList[j]])
-        writer.writerow([phoneList[j]])
+        writer.writerow(phoneList[j])
         writer.writerow([assetsList[j]])
         writer.writerow([loansList[j]])
         writer.writerow([netWorthList[j]])
