@@ -50,7 +50,7 @@ membersList = []
 fullTimeList = []
 partTimeList = []
 
-for i in range(5):
+for i in range(2):
 
 #get the initial name of the bank
 #generate a list of links
@@ -147,6 +147,7 @@ print (partTimeList)
 with open("./outputTest.csv", "w", newline='') as fp:
     writer = csv.writer(fp, delimiter = ',')
 
+    writer.writerows([bNameList,'Address','City'])
     writer.writerow(['Address'])
     writer.writerow(['City'])
     writer.writerow(['Zip Code'])
@@ -159,8 +160,12 @@ with open("./outputTest.csv", "w", newline='') as fp:
     writer.writerow(['Full Time Employees'])
     writer.writerow(['Part Time Employees'])
 
+    rows = zip(bNameList, addressList, cityList, zipcList, islandList, phoneList, assetsList, loansList, netWorthList, membersList, fullTimeList, partTimeList )
 
-    for j in range (5):
+    for row in rows:
+        writer.writerow(row)
+    
+    for j in range (2):
         writer.writerow([bNameList[j]])
         writer.writerow(addressList[j]) 
         writer.writerow(cityList[j])
