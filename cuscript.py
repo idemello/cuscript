@@ -50,7 +50,7 @@ membersList = []
 fullTimeList = []
 partTimeList = []
 
-for i in range(2):
+for i in range(5):
 
 #get the initial name of the bank
 #generate a list of links
@@ -84,17 +84,16 @@ for i in range(2):
 #generate an html tree structure
 	
     financeLinks = tree.xpath('//nav[@class="btnWrap"]/a/@href')
-#    print(financeLinks[-2])
-#    print(type(financeLinks[-2]))
+    print(financeLinks[-2])
+    print(type(financeLinks[-2]))
 
-#    if(financeLinks[-2] != '#reviews'):
-#        branchLink = financeLinks[-2]
+    if(financeLinks[-2] != '#reviews'):
+        branchList.append('Yes')
+    else:
+        branchList.append('No')
 #        page = requests.get(branchLink)
 #        tree = html.fromstring(page.content)
 #        branchList.append(tree.xpath('//div[@class="secText"]/a[1]/text()')
-#        nextPage = requests.get('//div[@class="secText"]/a[0]/href')
-#        financeLinks = tree.xpath('//nav[@class="btnWrap"]/a/@href')
-#		financeURL = financeLinks[-1]
 
     financeURL = financeLinks[-1]	
     page = requests.get(financeURL)
@@ -136,7 +135,7 @@ print (stateList)
 print (zipcList)
 print (islandList)
 print (phoneList)
-#print (branchList)
+print (branchList)
 print (assetsList)
 print (loansList)
 print (netWorthList)
@@ -146,9 +145,9 @@ print (partTimeList)
   
 with open("./outputTest.csv", "w", newline='') as fp:
     writer = csv.writer(fp, delimiter = ',')
-    writer.writerow((['Name', 'Address', 'City', 'Zip Code', 'Island', 'Phone Number', 'Assets', 'Loans', 'Net Worth', 'Number of Members', 'Full Time Employees', 'Part Time Employees']))
+    writer.writerow((['Name', 'Address', 'City', 'Zip Code', 'Island', 'Phone Number', 'Multiple Branches', 'Assets', 'Loans', 'Net Worth', 'Number of Members', 'Full Time Employees', 'Part Time Employees']))
     
-    rows = zip(bNameList, addressList, cityList, zipcList, islandList, phoneList, assetsList, loansList, netWorthList, membersList, fullTimeList, partTimeList )
+    rows = zip(bNameList, addressList, cityList, zipcList, islandList, phoneList, branchList, assetsList, loansList, netWorthList, membersList, fullTimeList, partTimeList )
  
     for row in rows:
         writer.writerow(row)
