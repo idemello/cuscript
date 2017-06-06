@@ -52,7 +52,7 @@ membersList = []
 fullTimeList = []
 partTimeList = []
 
-for i in range(5):
+for i in range(2):
 
 #get the initial name of the bank
 #generate a list of links
@@ -79,7 +79,7 @@ for i in range(5):
     zipcList.append(tree.xpath('//span[@itemprop="postalCode"]/text()'))
     zipCode = tree.xpath('//span[@itemprop="postalCode"]/text()') 
     islandList.append(islandFind(zipCode))
-    phoneList.append(tree.xpath('//div[@class="textH"]/span/text()'))
+    phoneList.append(tree.xpath('//div[@class="textH"][1]/span/text()'))
 
 #generate a new new url based on the financeLinks list
 #use the generated url to go to the next page
@@ -148,7 +148,7 @@ print (membersList)
 print (fullTimeList)
 print (partTimeList)
   
-with open("./outputTest.csv", "w", newline='') as fp:
+with open("./CreditUnionData.csv", "w", newline='') as fp:
     writer = csv.writer(fp, delimiter = ',')
     writer.writerow((['Name', 'Address', 'City', 'Zip Code', 'Island', 'Phone Number', 'Multiple Branches', 'Assets', 'Well Capitalized', 'Loans', 'Net Worth', 'Number of Members', 'Full Time Employees', 'Part Time Employees']))
     
