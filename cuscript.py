@@ -9,6 +9,8 @@ import requests
 import csv
 
 
+#islandFind takes in a zip code
+#returns the corresponding island the credit union is on
 def islandFind(zipCode):
 
     island = ""
@@ -35,7 +37,7 @@ page = requests.get('https://www.creditunionsonline.com/hawaii-credit-unions.htm
 tree = html.fromstring(page.content)
 addressLink = tree.xpath('//div[@class="sR"]/a/@href')
 
-
+#list initialization before the loop
 addressList = []
 cityList= []
 stateList= []
@@ -128,23 +130,23 @@ for i in range(61):
             assets2 = 1000000000
         elif assets2 == "Million":
             assets2= 1000000
-            
+
         asset = float(assets1) * assets2 #convert to float for calculation
         assetOut = str(asset) #convert from float back to string
     else:
         asset = str(assetsList)
         assetOut = asset.replace("$","")
-        
+
     if " " in loansList[i]:
         loans = loansList[i].split(" ")
-        
+
         loans1 = loans[0].replace("$","")
         loans2 = loans[1]
         if loans2 == "Billion":
             loans2 = 1000000000
         elif loans2 == "Million":
             loans2 = 1000000
-        
+
         loan = float(loans1) * loans2 #same convertion as assetsList
         loanOut = str(loan) #same convertion as assetsList
     else:
@@ -154,17 +156,18 @@ for i in range(61):
 
     assetList.append(assetOut)
     loanList.append(loanOut)
-    
+
 
 #print finance data
+#remove #'s for debugging
 
-    print(assetList) #[i] component addressed in the above code
-    print(loanList) #[i] component addressed in the above code
-    print(netWorthList[i])
-    print(wcList[i])
-    print(membersList[i])
-    print(fullTimeList[i])
-    print(partTimeList[i])		
+#    print(assetList) #[i] component addressed in the above code
+#    print(loanList) #[i] component addressed in the above code
+#    print(netWorthList[i])
+#    print(wcList[i])
+#    print(membersList[i])
+#    print(fullTimeList[i])
+#    print(partTimeList[i])
 
     print("Data has been collected from {0} Credit Unions\n,".format(i+1))
 
@@ -189,12 +192,18 @@ print (membersList)
 print (fullTimeList)
 print (partTimeList)
   
+#open a .csv file using the imported csv module
+#create the headings for all colums
+#define the writer to add values that exist between commas
+
 with open("./CreditUnionData.csv", "w", newline='') as fp:
     writer = csv.writer(fp, delimiter = ',')
     writer.writerow((['Name', 'Address', 'City', 'Zip Code', 'Island', 'Phone Number', 'Multiple Branches', 'Assets', 'Well Capitalized', 'Loans', 'Net Worth', 'Number of Members', 'Full Time Employees', 'Part Time Employees']))
-    
+#create a ziplist to hold all scraped data
+
     rows = zip(bNameList, addressList, cityList, zipcList, islandList, phoneList, branchList, assetList, wcList, loanList, netWorthList, membersList, fullTimeList, partTimeList )
- 
+
+#iterate through all the rows until data is correctly displayed within excel
     for row in rows:
         writer.writerow(row)
-   
+
