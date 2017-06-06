@@ -51,8 +51,11 @@ netWorthList = []
 membersList = []
 fullTimeList = []
 partTimeList = []
+assetList = [] #initalize new lists for output
+loanList = []
 
-for i in range(5):
+
+for i in range(3):
 
 #get the initial name of the bank
 #generate a list of links
@@ -115,10 +118,49 @@ for i in range(5):
     fullTimeList.append(finance[6])
     partTimeList.append(finance[7])
 
+# change assests and loans string format to purely numbers for calculation
+# and change back to string for output
+    if " " in assetsList[i]:
+        assets = assetsList[i].split(" ")
+
+        assets1 = assets[0].replace("$","")
+        assets2 = assets[1]
+        if assets2 == "Billion":
+            assets2 = 1000000000
+        elif assets2 == "Million":
+            assets2= 1000000
+            
+        asset = float(assets1) * assets2 #convert to float for calculation
+        assetOut = str(asset) #convert from float back to string
+    else:
+        asset = str(assetsList)
+        assetOut = asset.replace("$","")
+        
+    if " " in loansList[i]:
+        loans = loansList[i].split(" ")
+        
+        loans1 = loans[0].replace("$","")
+        loans2 = loans[1]
+        if loans2 == "Billion":
+            loans2 = 1000000000
+        elif loans2 == "Million":
+            loans2 = 1000000
+        
+        loan = float(loans1) * loans2 #same convertion as assetsList
+        loanOut = str(loan) #same convertion as assetsList
+    else:
+        loan = str(loansList)
+        loanOut = loan.replace("$","")
+
+
+    assetList.append(assetOut)
+    loanList.append(loanOut)
+    
+
 #print finance data
 
-    print(assetsList[i])
-    print(loansList[i])
+    print(assetList) #[i] component addressed in the above code
+    print(loanList) #[i] component addressed in the above code
     print(netWorthList[i])
     print(wcList[i])
     print(membersList[i])
@@ -140,8 +182,8 @@ print (zipcList)
 print (islandList)
 print (phoneList)
 print (branchList)
-print (assetsList)
-print (loansList)
+print (assetList)
+print (loanList)
 print (netWorthList)
 print (wcList)
 print (membersList)
@@ -152,7 +194,7 @@ with open("./outputTest.csv", "w", newline='') as fp:
     writer = csv.writer(fp, delimiter = ',')
     writer.writerow((['Name', 'Address', 'City', 'Zip Code', 'Island', 'Phone Number', 'Multiple Branches', 'Assets', 'Well Capitalized', 'Loans', 'Net Worth', 'Number of Members', 'Full Time Employees', 'Part Time Employees']))
     
-    rows = zip(bNameList, addressList, cityList, zipcList, islandList, phoneList, branchList, assetsList, wcList, loansList, netWorthList, membersList, fullTimeList, partTimeList )
+    rows = zip(bNameList, addressList, cityList, zipcList, islandList, phoneList, branchList, assetList, wcList, loanList, netWorthList, membersList, fullTimeList, partTimeList )
  
     for row in rows:
         writer.writerow(row)
