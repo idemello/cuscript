@@ -55,7 +55,11 @@ To run the script enter the directory and type the following command:
 
 ```python3 cuscript.py```
 
-The script will then traverse the pages pulling the afforementioned information. The data will be stored in an excel file which can be easily viewed.
+The script will then traverse the pages pulling the afforementioned information.
+
+The information will be stored in a file called CreditUnionData.csv
+
+This file can be opened in excel for easy viewing.
 
 
 
