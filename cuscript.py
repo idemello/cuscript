@@ -90,8 +90,8 @@ for i in range(61):
 #generate an html tree structure
 	
     financeLinks = tree.xpath('//nav[@class="btnWrap"]/a/@href')
-    print(financeLinks[-2])
-    print(type(financeLinks[-2]))
+#    print(financeLinks[-2])
+#    print(type(financeLinks[-2]))
 
     if(financeLinks[-2] != '#reviews'):
         branchList.append('Yes')
